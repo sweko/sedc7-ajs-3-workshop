@@ -3,14 +3,15 @@ class Footballer extends Person {
         squadNumber,
         position,
         team,
-        caps
+        caps,
+        image
     }) {
         super(firstName, lastName);
         this.squadNumber = squadNumber;
         this.position = position;
         this.team = team;
         this.caps = caps;
-        this.image = null;
+        this.image = image;
     }
 
 }
