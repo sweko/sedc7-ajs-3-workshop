@@ -1,5 +1,6 @@
 class Match {
-    constructor(firstSquad, secondSquad, stadium, date) {
+    constructor(id, firstSquad, secondSquad, stadium, date) {
+        this.id = id;
         this.firstSquad = firstSquad;
         this.secondSquad = secondSquad;
         this.stadium = stadium;
