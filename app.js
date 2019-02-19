@@ -3,6 +3,9 @@ $(async () => {
 
     $("#team-selector").on("change", async () => {
         const teamName = $("#team-selector").val();
+        if (teamName === "empty") {
+            return clearSquad();
+        }
         const squad = await loadSquad(teamName);
         displaySquad(squad);
     })
@@ -11,6 +14,7 @@ $(async () => {
 const loadTeamNames = async () => {
     const teamNames = await dataService.getAllTeamNames();
     const select = $("#team-selector");
+    select.append(`<option value="empty">-- Select a team --</option>`)
     for (const name of teamNames) {
         select.append(`<option value="${name}">${name}</option>`);
     }
@@ -33,4 +37,11 @@ const displaySquad = (squad) => {
         }
     }
     $("#total").text(`There are ${squad.players.length} players in the squad`);
+}
+
+const clearSquad = () => {
+    $("#team-name").empty();
+    $("#coach").empty();
+    $("#players").empty();
+    $("#total").empty();
 }
