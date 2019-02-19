@@ -7,7 +7,9 @@ const dataService = {
         const coach = dataMapper.getCoachFromServerData(squadData);
         const players = squadData.players.map(sp => dataMapper.fromServerPlayerToFootballer(sp));
         const result = new Squad(squadName, players, coach);
-        return Promise.resolve(result);
+        result.teamImage = squadData.teamImageUrl;
+        result.badgeImage = squadData.badgeImageUrl;
+        return result;
     },
     getMatches: (squadName) => {
 
@@ -17,6 +19,12 @@ const dataService = {
         const response = await fetch(url);
         const teams = await response.json();
         return teams;
+    },
+    getPlayer: async (squadName, squadNumber) => {
+        const response = await fetch(`${teamUrl}/${squadName}/${squadNumber}`);
+        const serverPlayer = await response.json();
+        const player = dataMapper.fromServerPlayerToFootballer(serverPlayer);
+        return player;
     }
 }
 

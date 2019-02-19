@@ -33,14 +33,22 @@ const displaySquad = (squad) => {
     for (const player of squad.players) {
         playersList.append(`<li>${player.getFullName()}</li>`)
         if (player.image) {
-            playersList.append(`<li><img src="${player.image}" /></li>`)
+            playersList.append(`<li>
+                <a href="player.html?team=${squad.name}&squadNum=${player.squadNumber}">
+                    <img src="${player.image}" />
+                </a>
+            </li>`)
         }
     }
     $("#total").text(`There are ${squad.players.length} players in the squad`);
+    $("#team-images").empty();
+    $("#team-images").append(`<img src="${squad.badgeImage}" />`)
+    $("#team-images").append(`<img src="${squad.teamImage}" />`)
 }
 
 const clearSquad = () => {
     $("#team-name").empty();
+    $("#team-images").empty();
     $("#coach").empty();
     $("#players").empty();
     $("#total").empty();

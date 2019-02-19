@@ -4,6 +4,8 @@ class Squad {
         this.players = players;
         this.coach = coach;
         this.matches = [];
+        this.teamImage = null;
+        this.badgeImage = null;
     }
 
     addMatch(match) {
