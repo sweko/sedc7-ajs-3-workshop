@@ -25,6 +25,11 @@ const dataService = {
         const serverPlayer = await response.json();
         const player = dataMapper.fromServerPlayerToFootballer(serverPlayer);
         return player;
+    },
+    setPlayer: async (squadName, squadNumber, player) => {
+        // use a POST request on the same url for get
+        // put a server player object in the body
+        // and call away
     }
 }
 
